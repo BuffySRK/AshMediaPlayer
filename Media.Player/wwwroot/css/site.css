@@ -64,13 +64,6 @@
     border-radius: 15px;
 }
 
-.upload-drag,
-.upload-wait,
-.upload-success,
-.upload-error {
-    display: none;
-}
-
 @media (min-width: 768px) {
     .media-content {
         background-image: url(../images/feathers.jpg);

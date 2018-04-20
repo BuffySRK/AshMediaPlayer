@@ -64,15 +64,11 @@
     <div id="uploadModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
-            <form class="box" method="post" action="" enctype="multipart/form-data">
+            <form asp-controller="Media" asp-action="UploadFile" method="post" enctype="multipart/form-data">
                 <div class="upload-input">
-                    <input class="upload-file" type="file" name="UploadFile" />
-                    <label for="file"><strong>Choose a file</strong><span class="upload-drag"> or drag it here</span>.</label>
+                    <input class="upload-file" type="file" name="file"/>
                     <button class="upload-button" type="submit">Upload</button>
                 </div>
-                <div class="upload-wait">Uploading&hellip;</div>
-                <div class="upload-success">Done!</div>
-                <div class="upload-error">Error! <span></span>.</div>
             </form>
 
         </div>

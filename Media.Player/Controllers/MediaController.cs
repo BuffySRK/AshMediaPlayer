@@ -25,19 +25,39 @@ namespace Media.Player.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadFile(IFormFile file)
         {
+            string fileType = file.FileName.Substring(file.FileName.Length - 4, 4);
+
+
             if (file == null || file.Length == 0)
                 return Content("file not selected");
 
-            var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "wwwroot",
-                        file.FileName);
-
-            using (var stream = new FileStream(path, FileMode.Create))
+            if (fileType == ".mp3" || fileType == "flac")
             {
-                await file.CopyToAsync(stream);
+                var path = Path.Combine(
+                    Directory.GetCurrentDirectory(), "wwwroot/media/audio",
+                    file.FileName);
+
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
             }
 
-            return RedirectToAction("Files");
+            else if (fileType == ".mp4" || fileType == ".ogg")
+            {
+                var path = Path.Combine(
+                    Directory.GetCurrentDirectory(), "wwwroot/media/video",
+                    file.FileName);
+
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Download(string filename)
