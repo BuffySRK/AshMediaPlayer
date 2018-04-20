@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Media.Player</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <div class="media-content">
+        <div class="container-fluid">
+            <button id="btnSync" class="media-options" data-toggle="modal" data-target="#uploadModal" onclick="resetMedia();">
+                <div class="media-ellipsis"></div>
+            </button>
+            <div style="float:right;">
+                <p>Rebmem&reg;</p>
+            </div>
+        </div>
+        <div class="media-housing">
+            @RenderBody()
+        </div>
+        <div class="media-footer">
+            <div class="container-fluid">
+                <div class="control-housing">
+                    <div class="col-xs-5">
+                        <div class="media-info" style="border: 1px solid red; background-color: antiquewhite; border-radius:2px;">
+                            <div id="TrackTitle" style="border-bottom: 1px solid red;">
+                                Track
+                            </div>
+                            <div id="TrackInformation">
+                                Info
+                            </div>
+                            <div id="TrackImage">
+                                Image
+                            </div>
+                        </div>
+                    </div>
+                    <div id="controls" class="col-xs-7">
+                        <div class="media-buttons">
+                            <button id="btnPlayPause" class="play glyphicon glyphicon-play" title="play" value="play" onclick="playPauseVideo();"></button>
+                            <button id="btnStop" class="stop glyphicon glyphicon-stop" title="stop" onclick="stopMedia();"></button>
+                            <button id="btnRwd" class="rewind glyphicon glyphicon-fast-backward" title="rewind" onclick="rwdMedia();"></button>
+                            <button id="btnFwd" class="forward glyphicon glyphicon-fast-forward" title="forward" onclick="fwdMedia();"></button>
+                        </div>
+                        <div class="media-progess">
+                            <progress id="progressBar" min="0" max="100" value="0">0% played</progress>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="uploadModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <form class="box" method="post" action="" enctype="multipart/form-data">
+                <div class="upload-input">
+                    <input class="upload-file" type="file" name="UploadFile" />
+                    <label for="file"><strong>Choose a file</strong><span class="upload-drag"> or drag it here</span>.</label>
+                    <button class="upload-button" type="submit">Upload</button>
+                </div>
+                <div class="upload-wait">Uploading&hellip;</div>
+                <div class="upload-success">Done!</div>
+                <div class="upload-error">Error! <span></span>.</div>
+            </form>
+
+        </div>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

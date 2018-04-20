@@ -1,0 +1,14 @@
+{
+  "name": "rebmem",
+  "version": "1.0.0",
+  "description": "Rebmem Media Player",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Buffy",
+  "license": "ISC",
+  "dependencies": {
+    "modernizr": "^3.6.0"
+  }
+}

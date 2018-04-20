@@ -1,0 +1,81 @@
+﻿.media-header, .media-content, .media-footer {
+    width: 100%;
+}
+
+.media-options {
+    margin: 5px 5px;
+    height: 40px;
+    width: 40px;
+    background-color: #000;
+    opacity: 0.7;
+    border-radius: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.media-ellipsis::after {
+    content: '\22EE';
+    color: #fff;
+    font-size: 2.5em;
+    position: absolute;
+    bottom: -8px;
+    left: 14px;
+    transform: rotate(90deg);
+}
+
+.media-content {
+    background-image: url(../images/feathers-mobile.jpg);
+    height: 100%;
+    position: absolute;
+}
+
+.media-housing {
+    transform: translateY(50%)
+}
+
+#MediaPlayer {
+    background-color: #DDD;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    max-width: 1080px;
+}
+
+.media-footer {
+    bottom: 0;
+    height: 20%;
+    background-color: #000;
+    opacity: 0.7;
+    position: absolute;
+}
+
+.control-housing {
+    margin-top: 20px;
+}
+
+.media-buttons {
+    padding: 3px;
+}
+
+.media-buttons > button {
+    background-color: #E4DBD0;
+    border-color: #593142;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.upload-drag,
+.upload-wait,
+.upload-success,
+.upload-error {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .media-content {
+        background-image: url(../images/feathers.jpg);
+    }
+    .media-housing {
+        transform: translateY(20%)
+    }
+}
