@@ -9,6 +9,7 @@ namespace Media.Player.Domain
     public class MediaPlayerContext : DbContext
     {
         public DbSet<MediaMetadata> MediaMetadata { get; set; }
+
         public MediaPlayerContext(DbContextOptions<MediaPlayerContext> options) : base(options)
         { }
 

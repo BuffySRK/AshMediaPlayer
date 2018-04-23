@@ -10,9 +10,10 @@ using System;
 namespace Media.Player.Migrations
 {
     [DbContext(typeof(MediaPlayerContext))]
-    partial class MediaPlayerContextModelSnapshot : ModelSnapshot
+    [Migration("20180423173206_StoringExtensionTypeAndUrls")]
+    partial class StoringExtensionTypeAndUrls
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

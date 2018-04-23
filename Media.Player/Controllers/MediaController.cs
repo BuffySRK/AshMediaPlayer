@@ -32,7 +32,10 @@ namespace Media.Player.Controllers
 
             await _context.SaveChangesAsync();
 
-            ViewBag.SongTitle = await _context.MediaMetadata.Select(x => x.Title).Where(x => x.Contains("Never")).FirstOrDefaultAsync();
+            var metadataEntity = await _context.MediaMetadata.Where(x => x.Title.Contains("Never")).FirstOrDefaultAsync();
+            var metadataDto = AutoMapperConfig.GetMapper().Map<MediaMetadataDto>(metadataEntity);
+
+            ViewBag.MediaMetadata = metadataDto;
 
             return View();
         }

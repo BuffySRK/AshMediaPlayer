@@ -14,7 +14,21 @@ namespace Media.Player.Domain
         public int MediaMetadataId { get; set; }
 
         [Required]
-        [MaxLength(500)]
+        [DataType(DataType.Url)]
+        public string MediaUrl { get; set; }
+
+        [Required]
+        [StringLength(500, MinimumLength=3,ErrorMessage ="Filename must be between 3 and 500 characters")]
+        [DataType(DataType.Text)]
         public string Title { get; set; }
+
+        [DataType(DataType.Text)]
+        public string Information { get; set; }
+
+        [DataType(DataType.ImageUrl)]
+        public string MediaArtUrl { get; set; }
+
+        [DataType(DataType.Text)]
+        public string MediaExtension { get; set; }
     }
 }
