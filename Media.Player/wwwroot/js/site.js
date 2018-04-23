@@ -4,23 +4,18 @@ player = document.getElementById('MediaPlayer');
 btnPlayPause = document.getElementById('btnPlayPause');
 progressBar = document.getElementById('progressBar');
 
-// Add a listener for the timeupdate event so we can update the progress bar
-player.addEventListener('timeupdate', updateProgressBar, false);
-
-// Add a listener for the play and pause events so the buttons state can be updated
-player.addEventListener('play', function () {
-    // Change the button to be a pause button
-    switchPlayPauseButton(btnPlayPause, 'pause');
-}, false);
-
-player.addEventListener('pause', function () {
-    // Change the button to be a play button
-    switchPlayPauseButton(btnPlayPause, 'play');
-}, false);
-
-player.addEventListener('ended', function () { this.pause(); }, false);
-
 progressBar.addEventListener("click", seek);
+player.addEventListener('timeupdate', updateProgressBar, false); // Add a listener for the timeupdate event so we can update the progress bar, set useCapture to false so it doesnt bubble.
+
+// Update the progress bar
+function updateProgressBar() {
+    // Work out how much of the media has played via the duration and currentTime parameters
+    var percentage = Math.floor((100 / player.duration) * player.currentTime);
+    // Update the progress bar's value
+    progressBar.value = percentage;
+    // Update the progress bar's text (for browsers that don't support the progress element)
+    progressBar.innerHTML = percentage + '% played';
+}
 
 function seek(e) {
     var percent = e.offsetX / this.offsetWidth;
@@ -28,6 +23,18 @@ function seek(e) {
     e.target.value = Math.floor(percent / 100);
     e.target.innerHTML = progressBar.value + '% played';
 }
+
+
+// Add a listener for the play and pause events so the buttons state can be updated
+player.addEventListener('play', function () {
+    // Change the button to a pause button
+    switchPlayPauseButton(btnPlayPause, 'pause');
+}, false);
+
+player.addEventListener('pause', function () {
+    // Change the button to a play button
+    switchPlayPauseButton(btnPlayPause, 'play');
+}, false);
 
 function playPauseVideo() {
     if (player.paused || player.ended) {
@@ -42,26 +49,6 @@ function playPauseVideo() {
     }
 }
 
-// Stop the current media from playing, and return it to the start position
-function stopMedia() {
-    player.pause();
-    if (player.currentTime) {
-        player.currentTime = 0;
-    }
-
-    switchPlayPauseButton(btnPlayPause, 'play');
-}
-
-// Update the progress bar
-function updateProgressBar() {
-    // Work out how much of the media has played via the duration and currentTime parameters
-    var percentage = Math.floor((100 / player.duration) * player.currentTime);
-    // Update the progress bar's value
-    progressBar.value = percentage;
-    // Update the progress bar's text (for browsers that don't support the progress element)
-    progressBar.innerHTML = percentage + '% played';
-}
-
 // Updates a button's title and CSS class
 function switchPlayPauseButton(btn, value) {
     btn.title = value;
@@ -72,6 +59,18 @@ function switchPlayPauseButton(btn, value) {
         btn.className = "play glyphicon glyphicon-play";
     }
 
+}
+
+player.addEventListener('ended', function () { this.pause(); }, false);
+
+// Stop the current media from playing, and return it to the start position
+function stopMedia() {
+    player.pause();
+    if (player.currentTime) {
+        player.currentTime = 0;
+    }
+
+    switchPlayPauseButton(btnPlayPause, 'play');
 }
 
 function resetMedia() {

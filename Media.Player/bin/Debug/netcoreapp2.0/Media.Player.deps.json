@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "9dbd96c1777f7cbad2b81d8cd7fa42f039b7b2ee"
+    "signature": "8962634601dac5ddee2c800edfb77c300f696064"
   },
   "compilationOptions": {
     "defines": [
@@ -23,10 +23,10 @@
     ".NETCoreApp,Version=v2.0": {
       "Media.Player/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.All": "2.0.6",
-          "Microsoft.NETCore.App": "2.0.0",
-          "windowsazure.mediaservices": "4.1.0.1",
-          "windowsazure.mediaservices.extensions": "4.1.0.1"
+          "Microsoft.AspNetCore.All": "2.0.7",
+          "Microsoft.EntityFrameworkCore": "2.0.2",
+          "Microsoft.EntityFrameworkCore.Sqlite": "2.0.2",
+          "Microsoft.NETCore.App": "2.0.0"
         },
         "runtime": {
           "Media.Player.dll": {}
@@ -147,7 +147,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.dll": {}
         }
       },
-      "Microsoft.AspNetCore.All/2.0.6": {
+      "Microsoft.AspNetCore.All/2.0.7": {
         "dependencies": {
           "Microsoft.AspNetCore": "2.0.2",
           "Microsoft.AspNetCore.Antiforgery": "2.0.2",
@@ -1538,46 +1538,6 @@
           "lib/netstandard1.1/Microsoft.Data.OData.dll": {}
         }
       },
-      "Microsoft.Data.Services.Client/5.6.4": {
-        "dependencies": {
-          "Microsoft.Data.OData": "5.8.2"
-        },
-        "runtime": {
-          "lib/net40/Microsoft.Data.Services.Client.dll": {}
-        },
-        "resources": {
-          "lib/net40/de/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "de"
-          },
-          "lib/net40/es/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "es"
-          },
-          "lib/net40/fr/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "fr"
-          },
-          "lib/net40/it/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "it"
-          },
-          "lib/net40/ja/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "ja"
-          },
-          "lib/net40/ko/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "ko"
-          },
-          "lib/net40/ru/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "ru"
-          },
-          "lib/net40/zh-Hans/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "zh-Hans"
-          },
-          "lib/net40/zh-Hant/Microsoft.Data.Services.Client.resources.dll": {
-            "locale": "zh-Hant"
-          }
-        },
-        "compile": {
-          "lib/net40/Microsoft.Data.Services.Client.dll": {}
-        }
-      },
       "Microsoft.Data.Sqlite/2.0.1": {
         "dependencies": {
           "Microsoft.Data.Sqlite.Core": "2.0.1",
@@ -2228,17 +2188,6 @@
         },
         "compile": {
           "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll": {}
-        }
-      },
-      "Microsoft.IdentityModel.Protocol.Extensions/1.0.2.205111437": {
-        "dependencies": {
-          "System.IdentityModel.Tokens.Jwt": "5.1.4"
-        },
-        "runtime": {
-          "lib/net45/Microsoft.IdentityModel.Protocol.Extensions.dll": {}
-        },
-        "compile": {
-          "lib/net45/Microsoft.IdentityModel.Protocol.Extensions.dll": {}
         }
       },
       "Microsoft.IdentityModel.Protocols/2.1.4": {
@@ -3833,58 +3782,6 @@
           "System.Xml.XPath": "4.3.0"
         }
       },
-      "TransientFaultHandling.Core/5.1.1209.1": {
-        "runtime": {
-          "lib/NET4/Microsoft.Practices.TransientFaultHandling.Core.dll": {}
-        },
-        "compile": {
-          "lib/NET4/Microsoft.Practices.TransientFaultHandling.Core.dll": {}
-        }
-      },
-      "windowsazure.mediaservices/4.1.0.1": {
-        "dependencies": {
-          "Microsoft.Data.Edm": "5.8.2",
-          "Microsoft.Data.OData": "5.8.2",
-          "Microsoft.Data.Services.Client": "5.6.4",
-          "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.14.1",
-          "Microsoft.IdentityModel.Protocol.Extensions": "1.0.2.205111437",
-          "Newtonsoft.Json": "10.0.1",
-          "System.IdentityModel.Tokens.Jwt": "5.1.4",
-          "System.Spatial": "5.8.2",
-          "TransientFaultHandling.Core": "5.1.1209.1",
-          "WindowsAzure.Storage": "8.1.4"
-        },
-        "runtime": {
-          "lib/net45/Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll": {},
-          "lib/net45/Microsoft.WindowsAzure.MediaServices.Client.Common.BlobTransfer.dll": {},
-          "lib/net45/Microsoft.WindowsAzure.MediaServices.Client.Common.FileEncryption.dll": {},
-          "lib/net45/Microsoft.WindowsAzure.MediaServices.Client.dll": {}
-        },
-        "compile": {
-          "lib/net45/Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll": {},
-          "lib/net45/Microsoft.WindowsAzure.MediaServices.Client.Common.BlobTransfer.dll": {},
-          "lib/net45/Microsoft.WindowsAzure.MediaServices.Client.Common.FileEncryption.dll": {},
-          "lib/net45/Microsoft.WindowsAzure.MediaServices.Client.dll": {}
-        }
-      },
-      "windowsazure.mediaservices.extensions/4.1.0.1": {
-        "dependencies": {
-          "Microsoft.Data.Edm": "5.8.2",
-          "Microsoft.Data.OData": "5.8.2",
-          "Microsoft.Data.Services.Client": "5.6.4",
-          "Newtonsoft.Json": "10.0.1",
-          "System.Spatial": "5.8.2",
-          "TransientFaultHandling.Core": "5.1.1209.1",
-          "WindowsAzure.Storage": "8.1.4",
-          "windowsazure.mediaservices": "4.1.0.1"
-        },
-        "runtime": {
-          "lib/net45/Microsoft.WindowsAzure.MediaServices.Client.Extensions.dll": {}
-        },
-        "compile": {
-          "lib/net45/Microsoft.WindowsAzure.MediaServices.Client.Extensions.dll": {}
-        }
-      },
       "WindowsAzure.Storage/8.1.4": {
         "dependencies": {
           "Microsoft.Data.OData": "5.8.2",
@@ -4118,12 +4015,12 @@
       "path": "microsoft.aspnetcore/2.0.2",
       "hashPath": "microsoft.aspnetcore.2.0.2.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.All/2.0.6": {
+    "Microsoft.AspNetCore.All/2.0.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5AEYk4hS25RcPkh1kWeKpn487/9Bb3GeVfu8Sl7EOFv9ADXmz7ypVyVlp8FMwgQIJSykzy6kF6KOOduhrWGmSA==",
-      "path": "microsoft.aspnetcore.all/2.0.6",
-      "hashPath": "microsoft.aspnetcore.all.2.0.6.nupkg.sha512"
+      "sha512": "sha512-hpWBRgs094P0jBWJRqBV+8oXl6G+O5ixDAgXI5qouOsg2jlLOmYr1+95+lRbLSn31HhKbQdNel6VQSDUbm0juw==",
+      "path": "microsoft.aspnetcore.all/2.0.7",
+      "hashPath": "microsoft.aspnetcore.all.2.0.7.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/2.0.2": {
       "type": "package",
@@ -4755,13 +4652,6 @@
       "path": "microsoft.data.odata/5.8.2",
       "hashPath": "microsoft.data.odata.5.8.2.nupkg.sha512"
     },
-    "Microsoft.Data.Services.Client/5.6.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-94XNZKwnpHuFAdR70kqNTMBv2ex9m+VVQX8dHknZgtlq+nTlZDgzFmahU0wsBaIqJWc3k8Z+FftQ2Voq9r0NWA==",
-      "path": "microsoft.data.services.client/5.6.4",
-      "hashPath": "microsoft.data.services.client.5.6.4.nupkg.sha512"
-    },
     "Microsoft.Data.Sqlite/2.0.1": {
       "type": "package",
       "serviceable": true,
@@ -5153,13 +5043,6 @@
       "sha512": "sha512-j7t22EsDOuo0IXqAbp6ijdB1GuaY8cu3YoPNZpymOhUMTVC+wRTV0IHqxL31HacCnJHU/igsqe70fDKZgZu3oA==",
       "path": "microsoft.identitymodel.logging/1.1.4",
       "hashPath": "microsoft.identitymodel.logging.1.1.4.nupkg.sha512"
-    },
-    "Microsoft.IdentityModel.Protocol.Extensions/1.0.2.205111437": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-OiDMTgJdkXuVbFAfYfQ3RqENKHtoM3PT588sUAfY6lN1Ip3kAymJCTSsw68nuvNIa/RvOnApze7v+pRNv4dTbA==",
-      "path": "microsoft.identitymodel.protocol.extensions/1.0.2.205111437",
-      "hashPath": "microsoft.identitymodel.protocol.extensions.1.0.2.205111437.nupkg.sha512"
     },
     "Microsoft.IdentityModel.Protocols/2.1.4": {
       "type": "package",
@@ -6091,27 +5974,6 @@
       "sha512": "sha512-jw9oHHEIVW53mHY9PgrQa98Xo2IZ0ZjrpdOTmtvk+Rvg4tq7dydmxdNqUvJ5YwjDqhn75mBXWttWjiKhWP53LQ==",
       "path": "system.xml.xpath.xdocument/4.3.0",
       "hashPath": "system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
-    },
-    "TransientFaultHandling.Core/5.1.1209.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-iQstxygOy8YDk1kwlfsf2qhc3ozOolSkdhr140mZIdZEixuaZGSk/0OnrLLTunQ3UVDbrzmZmhO4ADXByQOhJQ==",
-      "path": "transientfaulthandling.core/5.1.1209.1",
-      "hashPath": "transientfaulthandling.core.5.1.1209.1.nupkg.sha512"
-    },
-    "windowsazure.mediaservices/4.1.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-voyw6hK1CloEWLMaaxNPNGMZm27n1r7PHTqJrjY9Gf0G17fesCHyvusGryU67vjJGkgZ49EB2SWcXs7ZJ7M3Gw==",
-      "path": "windowsazure.mediaservices/4.1.0.1",
-      "hashPath": "windowsazure.mediaservices.4.1.0.1.nupkg.sha512"
-    },
-    "windowsazure.mediaservices.extensions/4.1.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-bKeYJozD2POs1uiVCNjUy5MC5s24wb88s6Yda5iQOKcmTeABgKTjWFFBkwNgvsKa/tCA+SUHfdngwsGyBAGZeg==",
-      "path": "windowsazure.mediaservices.extensions/4.1.0.1",
-      "hashPath": "windowsazure.mediaservices.extensions.4.1.0.1.nupkg.sha512"
     },
     "WindowsAzure.Storage/8.1.4": {
       "type": "package",

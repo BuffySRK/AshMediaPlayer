@@ -64,7 +64,7 @@
     <div id="uploadModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
-            <form asp-controller="Media" asp-action="UploadFile" method="post" enctype="multipart/form-data">
+            <form asp-action="UploadFile" asp-controller="Media" method="post" enctype="multipart/form-data">
                 <div class="upload-input">
                     <input class="upload-file" type="file" name="file"/>
                     <button class="upload-button" type="submit">Upload</button>

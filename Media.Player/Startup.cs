@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Media.Player.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.EntityFrameworkCore;
 
 namespace Media.Player
 {
@@ -28,6 +30,8 @@ namespace Media.Player
                     Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
             services.AddMvc();
+
+            services.AddDbContext<MediaPlayerContext>(options => options.UseSqlite("Data Source=mediaplayer.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

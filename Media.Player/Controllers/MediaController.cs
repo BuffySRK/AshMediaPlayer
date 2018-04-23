@@ -7,13 +7,33 @@ using Microsoft.AspNetCore.Mvc;
 using Media.Player.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Media.Player.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Media.Player.Controllers
 {
     public class MediaController : Controller
     {
-        public IActionResult Index()
+        private MediaPlayerContext _context;
+
+        public MediaController(MediaPlayerContext context)
         {
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var newSong = new MediaMetadata
+            {
+                Title = "Never going to give you up"
+            };
+
+            await _context.MediaMetadata.AddAsync(newSong);
+
+            await _context.SaveChangesAsync();
+
+            ViewBag.SongTitle = await _context.MediaMetadata.Select(x => x.Title).Where(x => x.Contains("Never")).FirstOrDefaultAsync();
+
             return View();
         }
 
@@ -25,13 +45,13 @@ namespace Media.Player.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadFile(IFormFile file)
         {
-            string fileType = file.FileName.Substring(file.FileName.Length - 4, 4);
+            string extension = Path.GetExtension(file.FileName);
 
 
             if (file == null || file.Length == 0)
                 return Content("file not selected");
 
-            if (fileType == ".mp3" || fileType == "flac")
+            if (extension == ".mp3" || extension == ".wma")
             {
                 var path = Path.Combine(
                     Directory.GetCurrentDirectory(), "wwwroot/media/audio",
@@ -44,7 +64,7 @@ namespace Media.Player.Controllers
                 }
             }
 
-            else if (fileType == ".mp4" || fileType == ".ogg")
+            else if (extension == ".mp4" || extension == ".ogg")
             {
                 var path = Path.Combine(
                     Directory.GetCurrentDirectory(), "wwwroot/media/video",
@@ -58,42 +78,6 @@ namespace Media.Player.Controllers
             }
 
             return RedirectToAction("Index");
-        }
-
-        public async Task<IActionResult> Download(string filename)
-        {
-            if (filename == null)
-                return Content("filename not present");
-
-            var path = Path.Combine(
-                           Directory.GetCurrentDirectory(),
-                           "wwwroot", filename);
-
-            var memory = new MemoryStream();
-            using (var stream = new FileStream(path, FileMode.Open))
-            {
-                await stream.CopyToAsync(memory);
-            }
-            memory.Position = 0;
-            return File(memory, GetContentType(path), Path.GetFileName(path));
-        }
-
-        private string GetContentType(string path)
-        {
-            var types = GetMimeTypes();
-            var ext = Path.GetExtension(path).ToLowerInvariant();
-            return types[ext];
-        }
-
-        private Dictionary<string, string> GetMimeTypes()
-        {
-            return new Dictionary<string, string>
-            {
-                {".mp3", "media/audio"},
-                {".flac", "media/audio" },
-                {".mp4", "media/video" },
-                {".ogg", "media/video" }
-            };
         }
     }
 }
