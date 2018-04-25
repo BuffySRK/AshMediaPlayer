@@ -76,6 +76,10 @@ namespace Media.Player
 
     public class MediaMetadataDto
     {
-        public string Title { get; set; }
+        public int MediaMetadataId { get; set; }
+        public string FileName { get; set; }
+        public string MediaUrl { get; set; }
+
+
     }
 }

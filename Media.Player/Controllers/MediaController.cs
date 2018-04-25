@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Media.Player.Domain;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace Media.Player.Controllers
 {
@@ -21,66 +22,66 @@ namespace Media.Player.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var newSong = new MediaMetadata
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadFile(IFormFile file, MediaModel model)
+        {
+            string extension = Path.GetExtension(file.FileName);
+
+            if (file == null || file.Length == 0)
+                return Content("file not selected");
+            else
             {
-                Title = "Never going to give you up"
+                var path = $@"wwwroot\media\{file.FileName}";
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+
+            var newMedia = new MediaMetadata
+            {
+                MediaUrl = WebUtility.HtmlEncode($"/media/{file.FileName}"),
+                MediaExtension = Path.GetExtension(file.FileName),
+                FileName = file.FileName,
+                Information = model.Information,
+                MediaArtUrl = model.MediaArtUrl
             };
 
-            await _context.MediaMetadata.AddAsync(newSong);
-
+            await _context.MediaMetadata.AddAsync(newMedia);
             await _context.SaveChangesAsync();
 
-            var metadataEntity = await _context.MediaMetadata.Where(x => x.Title.Contains("Never")).FirstOrDefaultAsync();
-            var metadataDto = AutoMapperConfig.GetMapper().Map<MediaMetadataDto>(metadataEntity);
+            return RedirectToAction("Index");
+        }
+        
+        public async Task<IActionResult> GetMediaUrl(int id)
+        {
+            var mediaMeta = await _context.MediaMetadata.Where(x => x.MediaMetadataId == id).Select(x => x.MediaUrl).FirstOrDefaultAsync();
 
-            ViewBag.MediaMetadata = metadataDto;
+            if (string.IsNullOrEmpty(mediaMeta))
+                return NotFound();
 
-            return View();
+            return Ok(mediaMeta);       
+        }
+
+        public async Task<IActionResult> GetAllMedia()
+        {
+            return Ok(await _context.MediaMetadata.ToListAsync());
+        }
+
+        public class MediaViewModel
+        {
+            public MediaModel Media { get; set; }
         }
 
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> UploadFile(IFormFile file)
-        {
-            string extension = Path.GetExtension(file.FileName);
-
-
-            if (file == null || file.Length == 0)
-                return Content("file not selected");
-
-            if (extension == ".mp3" || extension == ".wma")
-            {
-                var path = Path.Combine(
-                    Directory.GetCurrentDirectory(), "wwwroot/media/audio",
-                    file.FileName);
-
-
-                using (var stream = new FileStream(path, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-            }
-
-            else if (extension == ".mp4" || extension == ".ogg")
-            {
-                var path = Path.Combine(
-                    Directory.GetCurrentDirectory(), "wwwroot/media/video",
-                    file.FileName);
-
-
-                using (var stream = new FileStream(path, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-            }
-
-            return RedirectToAction("Index");
         }
     }
 }

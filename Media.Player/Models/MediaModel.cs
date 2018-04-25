@@ -9,7 +9,10 @@ namespace Media.Player.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Description { get; set; }
-        public string MediaArt { get; set; }
+        public string MediaUrl { get; set; }
+        public string Information { get; set; }
+        public string MediaArtUrl { get; set; }
+
+        public IList<string> TrackList { get; set; }
     }
 }

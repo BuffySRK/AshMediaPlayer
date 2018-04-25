@@ -26,7 +26,6 @@
 .media-content {
     background-image: url(../images/feathers-mobile.jpg);
     height: 100%;
-    position: absolute;
 }
 
 .media-housing {
@@ -46,7 +45,6 @@
     height: 20%;
     background-color: #000;
     opacity: 0.7;
-    position: absolute;
 }
 
 .control-housing {

@@ -23,18 +23,19 @@ namespace Media.Player.Migrations
                     b.Property<int>("MediaMetadataId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(500);
+
                     b.Property<string>("Information");
 
                     b.Property<string>("MediaArtUrl");
 
-                    b.Property<string>("MediaExtension");
+                    b.Property<string>("MediaExtension")
+                        .IsRequired();
 
                     b.Property<string>("MediaUrl")
                         .IsRequired();
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(500);
 
                     b.HasKey("MediaMetadataId");
 
