@@ -7,10 +7,7 @@
 <button id="btnSync" class="media-options" data-toggle="modal" data-target="#uploadModal">
     <div class="media-ellipsis"></div>
 </button>
-<div style="float:right;">
-    <p>Rebmem&reg;</p>
-    <a href="#" v-on:click.prevent="getPlaylist">Get playlist</a>
-</div>
+<a href="#" class="btn btn-primary" v-on:click.prevent="getPlaylist" style="float:right; margin: 7px 5px 5px;">Get playlist</a>
 
 <div class="media-player center-block" style="border-radius: 5px; margin-top: 1%;">
     <div>
@@ -27,7 +24,7 @@
     </div>
 </div>
 
-<div class="scroll-left">
+<div class="scroll-left" style="max-width:1080px;">
     <p>Current song: {{ currentMediaMeta.fileName ? currentMediaMeta.fileName : 'None' }}</p>
 </div>
 

@@ -41,6 +41,7 @@
 
 .media-player > div > video {
     width: 100%;
+    max-height: 500px;
 }
 
 .media-buttons {
