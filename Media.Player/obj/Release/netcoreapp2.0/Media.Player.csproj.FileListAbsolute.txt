@@ -1,0 +1,11 @@
+C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\bin\Release\netcoreapp2.0\Media.Player.deps.json
+C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\bin\Release\netcoreapp2.0\Media.Player.runtimeconfig.json
+C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\bin\Release\netcoreapp2.0\Media.Player.runtimeconfig.dev.json
+C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\bin\Release\netcoreapp2.0\Media.Player.dll
+C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\bin\Release\netcoreapp2.0\Media.Player.pdb
+C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\obj\Release\netcoreapp2.0\Media.Player.csprojResolveAssemblyReference.cache
+C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\obj\Release\netcoreapp2.0\Media.Player.csproj.CoreCompileInputs.cache
+C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\obj\Release\netcoreapp2.0\Media.Player.AssemblyInfoInputs.cache
+C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\obj\Release\netcoreapp2.0\Media.Player.AssemblyInfo.cs
+C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\obj\Release\netcoreapp2.0\Media.Player.dll
+C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\obj\Release\netcoreapp2.0\Media.Player.pdb

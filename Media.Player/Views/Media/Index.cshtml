@@ -9,69 +9,43 @@
 </button>
 <div style="float:right;">
     <p>Rebmem&reg;</p>
+    <a href="#" v-on:click.prevent="getPlaylist">Get playlist</a>
 </div>
 
-<a href="#" v-on:click.prevent="getPlaylist">Get playlist</a>
-
-<div v-for="item in playlist">
-    <a href="#" v-on:click.prevent="loadMedia(item)">Get song</a>
-    {{ item.fileName }}
-    <hr />
-</div>
-
-<div class="media-player center-block">
+<div class="media-player center-block" style="border-radius: 5px; margin-top: 1%;">
     <div>
         <video ref="mediaPlayer" :src="currentMediaMeta.mediaUrl">
             Your browser does not support HTML5 video.
         </video>
     </div>
+    <div style="height: 100px;width: 100%;overflow: auto;padding: 10px;margin: 5px auto;">
+        <div class="playlist" v-for="item in playlist">
+            <a href="#" v-on:click.prevent="loadMedia(item)">Play</a>: <br />
+            {{ item.fileName }}
+            <hr />
+        </div>
+    </div>
 </div>
 
-@*<div class="media-footer">
-        <div class="container-fluid">
-            <div class="control-housing">
-                <div class="col-xs-5">
-                    <div class="media-info" style="border: 1px solid red; background-color: antiquewhite; border-radius:2px;">
-                        <div id="TrackTitle" style="border-bottom: 1px solid red;">
-                            Track
-                        </div>
-                        <div id="TrackInformation">
-                            Info
-                        </div>
-                        <div id="TrackImage">
-                            Image
-                        </div>
-                    </div>
-                </div>
-                <div id="controls" class="col-xs-7">
-                    <div class="media-buttons">
-                        <button id="btnPlay" class="play glyphicon glyphicon-play" title="play" value="play" onclick="playMedia();"></button>
-                        <button id="btnPause" class="pause glyphicon glyphicon-pause" title="pause" value="pause" onclick="pauseMedia();"></button>
-                        <button id="btnStop" class="stop glyphicon glyphicon-stop" title="stop" onclick="stopMedia();"></button>
-                        <button id="btnRwd" class="rewind glyphicon glyphicon-fast-backward" title="rewind" onclick="rwdMedia();"></button>
-                        <button id="btnFwd" class="forward glyphicon glyphicon-fast-forward" title="forward" onclick="fwdMedia();"></button>
-                    </div>
-                    <div class="media-progess">
-                        <progress id="progressBar" min="0" max="100" value="0">0% played</progress>
-                    </div>
-                </div>
+<div class="scroll-left">
+    <p>Current song: {{ currentMediaMeta.fileName ? currentMediaMeta.fileName : 'None' }}</p>
+</div>
+
+<div id="mediaPlayerControls" class="footer navbar-fixed-bottom" style="background-color:rgba(0, 0, 0, 0.5); padding:2% 0;">
+    <div class="center-block" style="width:138px;">
+        <div class="media-buttons">
+            <div>
+                <button class="glyphicon" v-bind:class="isPlaying ? 'glyphicon-pause' : 'glyphicon-play'" title="play" value="play" v-on:click.prevent="playPause"></button>
+                <button class="stop glyphicon glyphicon-stop" title="stop" v-on:click.prevent="stop"></button>
+                <button class="rewind glyphicon glyphicon-fast-backward" title="rewind" v-on:click.prevent="rewind"></button>
+                <button class="forward glyphicon glyphicon-fast-forward" title="forward" v-on:click.prevent="forward"></button>
             </div>
         </div>
-    </div>*@
-
-<div>
-    <h1>Current song: {{ currentMediaMeta.fileName ? currentMediaMeta.fileName : 'None' }}</h1>
-</div>
-
-<div id="mediaPlayerControls">
-    <div class="media-buttons">
-        <button class="glyphicon" v-bind:class="isPlaying ? 'glyphicon-pause' : 'glyphicon-play'" title="play" value="play" v-on:click.prevent="playPause"></button>
-        <button class="stop glyphicon glyphicon-stop" title="stop" v-on:click.prevent="stop"></button>
-        <button class="rewind glyphicon glyphicon-fast-backward" title="rewind" v-on:click.prevent="rewind"></button>
-        <button class="forward glyphicon glyphicon-fast-forward" title="forward" v-on:click.prevent="forward"></button>
-    </div>
-    <div class="media-progess">
-        <progress ref="progressBar" min="0" max="100" :value="percentagePlayed">{{ percentagePlayed }}% played</progress>
+        <div class="media-progess">
+            <div>
+                <progress ref="progressBar" min="0" max="100" :value="percentagePlayed">{{ percentagePlayed }}% played</progress>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -79,8 +53,6 @@
     <div class="modal-dialog">
         <form asp-action="UploadFile" asp-controller="Media" method="post" enctype="multipart/form-data">
             <div class="upload-input">
-                <input type="text" name="information" />
-                <input type="text" name="mediaArtUrl" />
                 <input class="upload-file" type="file" name="file" />
                 <button class="upload-button" type="submit">Upload</button>
             </div>

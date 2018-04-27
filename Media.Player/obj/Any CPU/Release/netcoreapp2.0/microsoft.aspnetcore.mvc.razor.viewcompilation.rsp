@@ -1,0 +1,10 @@
+C:\Users\ashley.henry\Desktop\Rebmem\Media.Player
+--output-path=obj\Any CPU\Release\netcoreapp2.0\
+--application-name=Media.Player
+--content-root=C:\Users\ashley.henry\Desktop\Rebmem\Media.Player
+--file=C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\Views\Media\Index.cshtml
+--file=C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\Views\Shared\Error.cshtml
+--file=C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\Views\Shared\_Layout.cshtml
+--file=C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\Views\Shared\_ValidationScriptsPartial.cshtml
+--file=C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\Views\_ViewImports.cshtml
+--file=C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\Views\_ViewStart.cshtml

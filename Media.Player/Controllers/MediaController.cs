@@ -10,16 +10,23 @@ using System.IO;
 using Media.Player.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage;
+using Media.Player.Storage;
 
 namespace Media.Player.Controllers
 {
     public class MediaController : Controller
     {
         private MediaPlayerContext _context;
+        private IStorageService _mediaStorage;
 
-        public MediaController(MediaPlayerContext context)
+        public MediaController(MediaPlayerContext context, IStorageService mediaStorage)
         {
             _context = context;
+            _mediaStorage = mediaStorage;
         }
 
         public IActionResult Index()
@@ -30,33 +37,29 @@ namespace Media.Player.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadFile(IFormFile file, MediaModel model)
         {
-            string extension = Path.GetExtension(file.FileName);
-
             if (file == null || file.Length == 0)
-                return Content("file not selected");
-            else
-            {
-                var path = $@"wwwroot\media\{file.FileName}";
+                return BadRequest("file not selected");            
 
-                using (var stream = new FileStream(path, FileMode.Create))
+            try
+            {
+                var url = await _mediaStorage.AddToStorage(file);
+
+                var newMedia = new MediaMetadata
                 {
-                    await file.CopyToAsync(stream);
-                }
+                    MediaUrl = url,
+                    MediaExtension = Path.GetExtension(file.FileName),
+                    FileName = file.FileName,
+                };
+
+                await _context.MediaMetadata.AddAsync(newMedia);
+                await _context.SaveChangesAsync();
             }
-
-            var newMedia = new MediaMetadata
+            catch(Exception e)
             {
-                MediaUrl = WebUtility.HtmlEncode($"/media/{file.FileName}"),
-                MediaExtension = Path.GetExtension(file.FileName),
-                FileName = file.FileName,
-                Information = model.Information,
-                MediaArtUrl = model.MediaArtUrl
-            };
+                return BadRequest(e.Message);
+            }            
 
-            await _context.MediaMetadata.AddAsync(newMedia);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
+            return RedirectToAction("index");
         }
         
         public async Task<IActionResult> GetMediaUrl(int id)

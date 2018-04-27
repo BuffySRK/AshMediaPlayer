@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Media.Player.Storage;
 
 namespace Media.Player
 {
@@ -32,7 +33,9 @@ namespace Media.Player
 
             services.AddMvc();
 
-            services.AddDbContext<MediaPlayerContext>(options => options.UseSqlite("Data Source=mediaplayer.db"));            
+            services.AddDbContext<MediaPlayerContext>(options => options.UseSqlite("Data Source=mediaplayer.db"));
+
+            services.AddTransient<IStorageService, AzureBlob>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
