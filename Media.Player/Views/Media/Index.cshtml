@@ -16,6 +16,9 @@
         </video>
     </div>
     <div style="height: 100px;width: 100%;overflow: auto;padding: 10px;margin: 5px auto;">
+        <div v-if="this.playlist.length > 0">
+            <a href="#" class="btn btn-primary" v-on:click.prevent="random" style="float:right; margin: 5px;">random</a>
+        </div>
         <div class="playlist" v-for="item in playlist">
             <a href="#" v-on:click.prevent="loadMedia(item)">Play</a>: <br />
             {{ item.fileName }}
@@ -24,7 +27,7 @@
     </div>
 </div>
 
-<div class="scroll-left" style="max-width:1080px;">
+<div class="scroll-left center-block" style="max-width:1080px;">
     <p>Current song: {{ currentMediaMeta.fileName ? currentMediaMeta.fileName : 'None' }}</p>
 </div>
 
@@ -128,6 +131,11 @@
                             this.playlist = result;
                         }
                     })
+                },
+                random() {
+                    var i = Math.floor((Math.random() * this.playlist.length) + 1);
+
+                    this.loadMedia(this.playlist[i]);
                 },
                 updateProgressBar() {
                     var mPlayer = this.$refs.mediaPlayer;
