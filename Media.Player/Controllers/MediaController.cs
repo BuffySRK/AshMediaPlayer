@@ -35,7 +35,7 @@ namespace Media.Player.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UploadFile(IFormFile file, MediaModel model)
+        public async Task<IActionResult> UploadFile(IFormFile file)
         {
             if (file == null || file.Length == 0)
                 return BadRequest("file not selected");            
@@ -75,11 +75,6 @@ namespace Media.Player.Controllers
         public async Task<IActionResult> GetAllMedia()
         {
             return Ok(await _context.MediaMetadata.ToListAsync());
-        }
-
-        public class MediaViewModel
-        {
-            public MediaModel Media { get; set; }
         }
 
         public IActionResult Error()

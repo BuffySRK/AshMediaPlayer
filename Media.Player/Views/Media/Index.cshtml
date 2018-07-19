@@ -2,12 +2,12 @@
     ViewData["Title"] = "Rebmem";
 }
 
-@model MediaModel;
-
 <button id="btnSync" class="media-options" data-toggle="modal" data-target="#uploadModal">
     <div class="media-ellipsis"></div>
 </button>
-<a href="#" class="btn btn-primary" v-on:click.prevent="getPlaylist" style="float:right; margin: 7px 5px 5px;">Get playlist</a>
+<div class="btn btn-primary">
+    <a href="#" class="" v-on:click.prevent="getPlaylist" style="float:right; margin: 7px 5px 5px;">Get playlist</a>
+</div>
 
 <div class="media-player center-block" style="border-radius: 5px; margin-top: 1%;">
     <div>

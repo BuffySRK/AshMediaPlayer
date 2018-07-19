@@ -9,3 +9,14 @@ C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\obj\Debug\netcoreapp2.0\Media.
 C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\bin\Debug\netcoreapp2.0\Media.Player.pdb
 C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\obj\Debug\netcoreapp2.0\Media.Player.dll
 C:\Users\ashley.henry\Desktop\Rebmem\Media.Player\obj\Debug\netcoreapp2.0\Media.Player.pdb
+C:\git\AshMediaPlayer\Media.Player\obj\Debug\netcoreapp2.0\Media.Player.csprojResolveAssemblyReference.cache
+C:\git\AshMediaPlayer\Media.Player\obj\Debug\netcoreapp2.0\Media.Player.csproj.CoreCompileInputs.cache
+C:\git\AshMediaPlayer\Media.Player\obj\Debug\netcoreapp2.0\Media.Player.AssemblyInfoInputs.cache
+C:\git\AshMediaPlayer\Media.Player\obj\Debug\netcoreapp2.0\Media.Player.AssemblyInfo.cs
+C:\git\AshMediaPlayer\Media.Player\obj\Debug\netcoreapp2.0\Media.Player.dll
+C:\git\AshMediaPlayer\Media.Player\obj\Debug\netcoreapp2.0\Media.Player.pdb
+C:\git\AshMediaPlayer\Media.Player\bin\Debug\netcoreapp2.0\Media.Player.deps.json
+C:\git\AshMediaPlayer\Media.Player\bin\Debug\netcoreapp2.0\Media.Player.runtimeconfig.json
+C:\git\AshMediaPlayer\Media.Player\bin\Debug\netcoreapp2.0\Media.Player.runtimeconfig.dev.json
+C:\git\AshMediaPlayer\Media.Player\bin\Debug\netcoreapp2.0\Media.Player.dll
+C:\git\AshMediaPlayer\Media.Player\bin\Debug\netcoreapp2.0\Media.Player.pdb

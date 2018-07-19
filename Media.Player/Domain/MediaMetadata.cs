@@ -22,9 +22,5 @@ namespace Media.Player.Domain
         [Required]
         [MaxLength(80)]
         public string FileName{ get; set; }
-
-        public string Information { get; set; }
-
-        public string MediaArtUrl { get; set; }
     }
 }
